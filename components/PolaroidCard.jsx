@@ -24,10 +24,7 @@ const PolaroidCard = ({ image, polaroidKey, frameSize }) => {
   };
 
   return (
-    <div
-      key={image.id}
-      className="transform transition-transform hover:rotate-2 hover:-translate-y-2"
-    >
+    <div key={image.id} className="transform transition-transform">
       <div
         className={`bg-white shadow-xl rounded-sm relative group ${frameSize}`}
         ref={elementRef}
@@ -43,10 +40,12 @@ const PolaroidCard = ({ image, polaroidKey, frameSize }) => {
           />
         </div>
       </div>
-      {/* Download Button */}
-      <Button onClick={() => takeScreenshot()} title="Download Polaroid">
-        <Download /> Download
-      </Button>
+      {/* Centered Download Button */}
+      <div className="flex justify-center mt-4">
+        <Button onClick={() => takeScreenshot()} title="Download Polaroid">
+          <Download /> Download
+        </Button>
+      </div>
     </div>
   );
 };
