@@ -55,65 +55,6 @@ const PolaroidUploader = () => {
     handleImageUpload(e.dataTransfer.files);
   };
 
-  const downloadPolaroid = async (imageUrl, imageName) => {
-    if (typeof window === "undefined") return; // Guard for SSR
-
-    const sizeConfig = FRAME_SIZES[frameSize];
-
-    // Create canvas
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-
-    // Set canvas size based on selected frame size
-    canvas.width = sizeConfig.width;
-    canvas.height = sizeConfig.height;
-
-    // Draw white Polaroid frame
-    ctx.fillStyle = "white";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Load and draw the image
-    const img = new window.Image();
-    img.crossOrigin = "anonymous";
-
-    let imageWidth;
-    let imageHeight;
-    await new Promise((resolve, reject) => {
-      img.onload = () => {
-        // Get image dimensions
-        imageWidth = img.width;
-        imageHeight = img.height;
-        console.log(`Image dimensions: ${imageWidth}x${imageHeight}`);
-        resolve();
-      };
-      img.onerror = reject;
-      img.src = imageUrl;
-    });
-
-    // const imgCenterX = imageWidth / 2;
-    // const imgCenterY = imageHeight / 2;
-
-    // Calculate dimensions to maintain aspect ratio
-    const padding = sizeConfig.padding;
-    const availableWidth = canvas.width - padding * 2;
-    const availableHeight = canvas.height - padding * 2 - padding * 2;
-
-    // const clipX = imgCenterX - (availableWidth / 2);
-    // const clipY = imgCenterY - (availableHeight / 2);
-
-    // Draw the image with padding
-    ctx.drawImage(img, padding, padding, availableWidth, availableWidth);
-
-    // Clip the image and position the clipped part on the canvas
-    // ctx.drawImage(img, clipX, clipY, availableWidth, availableHeight, padding, padding, availableWidth, availableWidth);
-
-    // Create download link
-    const link = document.createElement("a");
-    link.download = `polaroid-${frameSize}-${imageName}`;
-    link.href = canvas.toDataURL("image/png");
-    link.click();
-  };
-
   // Calculate preview size classes based on frame size
   const getPreviewSizeClasses = () => {
     switch (frameSize) {
