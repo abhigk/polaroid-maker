@@ -1,7 +1,5 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import {outfit} from '@/components/ui/font';
 
 export const metadata = {
   title: 'Polaroid Uploader',
@@ -18,7 +16,7 @@ export default function RootLayout({
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap" rel="stylesheet" />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={`${outfit.className} antialiased`}>{children}</body>
     </html>
   )
 }
