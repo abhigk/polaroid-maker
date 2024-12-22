@@ -4,7 +4,7 @@ import Image from "next/image";
 import { toPng } from "html-to-image";
 import { Download } from "lucide-react";
 
-const PolaroidCard = ({ image, polaroidKey, frameSize }) => {
+const PolaroidCard = ({ image, frameSize, isFiltered }) => {
   const elementRef = useRef(null);
 
   const takeScreenshot = async () => {
@@ -30,13 +30,17 @@ const PolaroidCard = ({ image, polaroidKey, frameSize }) => {
         ref={elementRef}
       >
         <div className="aspect-square mb-4 overflow-hidden relative">
-          {/* filter: contrast(110%) brightness(80%) saturate(150%) hue-rotate(-10deg); */}
           <Image
             src={image.url}
             alt={image.name}
             fill
             className="object-cover"
             unoptimized // Since we're using object URLs
+            style={
+              isFiltered
+                ? { filter: "brightness(0.8) contrast(1.2) saturate(1.2)" }
+                : {}
+            }
           />
         </div>
       </div>

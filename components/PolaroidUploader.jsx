@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Camera } from "lucide-react";
 import PolaroidCard from "@/components/PolaroidCard";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
 
 const FRAME_SIZES = {
   small: {
@@ -30,6 +32,7 @@ const PolaroidUploader = () => {
   const [images, setImages] = useState([]);
   const [isDragging, setIsDragging] = useState(false);
   const [frameSize, setFrameSize] = useState("medium");
+  const [polaroidFilter, setPolaroidFilter] = useState(false);
 
   const handleImageUpload = (files) => {
     const newImages = Array.from(files).map((file) => ({
@@ -69,6 +72,12 @@ const PolaroidUploader = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-4">
+      <Switch
+        id="polaroid-filter"
+        checked={polaroidFilter}
+        onCheckedChange={() => setPolaroidFilter(!polaroidFilter)}
+      />
+      <Label htmlFor="polaroid-filter">Polaroid Filter</Label>
       {/* Upload Area */}
       <Card
         className={`mb-8 ${isDragging ? "border-blue-500 bg-blue-50" : ""}`}
@@ -120,6 +129,7 @@ const PolaroidUploader = () => {
             key={image.id}
             image={image}
             frameSize={getPreviewSizeClasses()}
+            isFiltered={polaroidFilter}
           />
         ))}
       </div>
