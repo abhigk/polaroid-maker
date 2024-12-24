@@ -2,8 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-
-import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 // import { Icons } from "@/components/icons";
 import Logo from "@/components/Logo";
 import {
@@ -23,8 +22,8 @@ function Navbar() {
       <NavigationMenuList>
         <NavigationMenuItem>
           <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Get Started
+            <NavigationMenuLink>
+              <Button>Get Started</Button>
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

@@ -12,6 +12,7 @@ export default {
   	extend: {
   		colors: {
 			'light-grey': 'var(--light-grey)',
+			'primary-pink':'var(--primary-pink)',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

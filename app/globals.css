@@ -34,7 +34,8 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
 
-    --light-grey:#777478;
+    --light-grey: #777478;
+    --primary-pink: #fa4580;
   }
   .dark {
     --background: 0 0% 3.9%;
