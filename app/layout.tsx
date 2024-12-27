@@ -1,23 +1,18 @@
-import { Layout } from '@/components/dom/Layout'
-import '@/global.css'
+import './global.css'
+import { outfit } from '@/components/ui/font'
 
 export const metadata = {
-  title: 'Next.js + Three.js',
-  description: 'A minimal starter for Nextjs + React-three-fiber and Threejs.',
+  title: 'Polaroid Uploader',
+  description: 'Create and download polaroid-style images',
 }
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en' className='antialiased'>
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
-      <head />
-      <body>
-        {/* To avoid FOUT with styled-components wrap Layout with StyledComponentsRegistry https://beta.nextjs.org/docs/styling/css-in-js#styled-components */}
-        <Layout>{children}</Layout>
-      </body>
+    <html lang='en'>
+      <head>
+        <link href='https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap' rel='stylesheet' />
+      </head>
+      <body className={`${outfit.className} antialiased`}>{children}</body>
     </html>
   )
 }
