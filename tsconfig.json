@@ -36,7 +36,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "app/components/AnimatedCube.jsx", "app/components/Scene.jsx", "app/page.jsx"  ],
   "exclude": [
     "node_modules"
   ]

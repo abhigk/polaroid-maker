@@ -10,6 +10,9 @@ export default {
   ],
   theme: {
   	extend: {
+		 backgroundImage: {
+      'polaroid-collection': "url('/images/polaroid-bg.png')",
+    },
   		colors: {
 			'light-grey': 'var(--light-grey)',
 			'primary-pink':'var(--primary-pink)',
